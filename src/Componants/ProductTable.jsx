@@ -1,9 +1,27 @@
 import { useCart } from "../context/CartContext";
+import { useState } from "react";
 
 const ProductTable = ({ products }) => {
   const { cartItems, addToCart } = useCart();
+  const [popupMessage, setPopupMessage] = useState(null);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setPopupMessage(`${product.title} has been added to the cart`);
+
+    setTimeout(() => {
+      setPopupMessage(null);
+    }, 3000); 
+  };
+
   return (
-    <div className="product-table-wrapper">
+    <div className="product-table-wrapper" style={{ position: 'relative' }}>
+      {popupMessage && (
+        <div className="popup-message">
+          ✅ {popupMessage}
+        </div>
+      )}
+
       <table className="product-table">
         <thead>
           <tr>
@@ -25,7 +43,7 @@ const ProductTable = ({ products }) => {
               <td>{p.stock}</td>
               <td>
                 <button
-                  onClick={() => addToCart(p)}
+                  onClick={() => handleAddToCart(p)}
                   className="add-to-cart-btn"
                 >
                   Add to Cart
@@ -39,4 +57,4 @@ const ProductTable = ({ products }) => {
   );
 };
 
-export default ProductTable
+export default ProductTable;
