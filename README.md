@@ -1,8 +1,11 @@
-<h2>🚀 Getting Started with Create React App</h2>
+<h2> Getting Started with Create React App</h2>
 
 <p>This project was bootstrapped with <strong>Create React App</strong>.</p>
 
 <h3>📜 Available Scripts</h3>
+<p>Install dependancy before run to devolepment server</strong>.</p>
+
+<h4> npm install</h4>
 
 <p>In the project directory, you can run:</p>
 
